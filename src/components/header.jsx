@@ -44,7 +44,7 @@ export default function Header() {
         </div>
       </div>
       <div className=' flex items-center gap-10 px-10  bg-white'> 
-        <img src="src\assets\img\идеа.png" alt="" className=' w-28  ' />
+        <Link to={"/"}><img src="src\assets\img\идеа.png" alt="" className=' w-28  ' /></Link>
         <button className='flex text-stone-50 w-48 justify-center h-12  rounded-xl active:border-pink-500x` bg-pink-500 items-center gap-1 hover:bg-pink-900'>Каталог товаров <GiHamburgerMenu /></button>
         <div className='flex'>          <input type="text" name="" id="huy" placeholder='Поиск ' className=' bg-gray-200 p-2.5 rounded-l-xl w-[600px] active:bg-stone-50 focus:bg-stone-50 focus:border-pink-400 ' /> <label htmlFor="huy" className=' p-3 bg-gray-200 rounded-r-xl hover:bg-gray-300 w-12 '><CiSearch /></label></div>
     <div className="flex items-center gap-8">

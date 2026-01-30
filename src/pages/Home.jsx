@@ -4,6 +4,8 @@ import Hits from '../components/hits'
 import Smartfonlar from '../components/Smartfonlar'
 import Big from '../components/big'
 import Uy from '../components/Uy'
+import { Aksiyalar } from '../components/Aksiyaar'
+import AboutIdea from '../components/AboutIdea'
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
         <Smartfonlar/>
         <Big/>
         <Uy/>
+        <Aksiyalar/>
+        <AboutIdea/>
     </div>
   )
 }
