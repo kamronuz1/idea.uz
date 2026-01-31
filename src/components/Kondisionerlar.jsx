@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axiosInstance from "../service/axios.inctance";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 
-export default function HitsCards() {
+export default function Kondisionerlar() {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     try {
@@ -22,7 +22,7 @@ export default function HitsCards() {
   return (
     <div className="px-12 mb-10 mt-10">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-xl font-semibold">Хиты продаж</p>
+        <p className="text-xl font-semibold">Кондиционеры</p>
         <Link to={"/"}>
           <p
             onClick={() => navigate("/products")}
@@ -35,16 +35,13 @@ export default function HitsCards() {
       <Link>
         <div className=" gap-6  grid grid-cols-5 ">
           {products
-            .filter((product) => product.xit == "true")
+            .filter((product) => product.category == "Kondisioner")
 
             .map((product) => (
               <div
                 key={product.id}
                 className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
               >
-                <span className="absolute top-3 left-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-3 py-1 rounded-full">
-                  ХИТ
-                </span>
 
                 <button className="absolute top-3 right-3 text-gray-400 hover:text-pink-500">
                   <FaHeart size={18} />
