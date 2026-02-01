@@ -23,6 +23,14 @@ export default function SizUchunMaxsusCards() {
     <div className="py-9 px-16">
       <div className="flex justify-between items-center mb-6">
         <p className="text-xl font-semibold">Специально для вас</p>
+        <Link to={"/"}>
+                  <p
+                    onClick={() => navigate("/products")}
+                    className="text-pink-600 cursor-pointer hover:underline flex items-center"
+                  >
+                    Главная <BiRightArrowAlt />
+                  </p>
+                </Link>
       </div>
 
       <div className="grid grid-cols-5 gap-6">
