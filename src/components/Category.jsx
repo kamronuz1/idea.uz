@@ -4,9 +4,9 @@ import { NavLink } from "react-router-dom";
 export default function Category() {
   return (
     <div className="px-16">
-      <p className="text-2xl font-semibold">Категории</p>
+      <p className="text-2xl font-semibold pl-5">Категории</p>
 
-      <div className="flex gap-10">
+      <div className="flex gap-14 justify-center">
         <NavLink to={"/smartphone"}>
           <div className="bg-gray-200 w-96 h-80 rounded-xl mt-10 mb-10 relative overflow-hidden hover:text-white hover:bg-teal-600 duration-300">
             <p className="font-semibold text-2xl p-5">Смартфоны</p>
@@ -45,7 +45,7 @@ export default function Category() {
         </NavLink>
       </div>
 
-      <div className="flex gap-10">
+      <div className="flex gap-14 justify-center">
         <NavLink to={"/noutbuklar"}>
           <div className="bg-gray-200 w-96 h-80 rounded-xl mt-10 mb-10 relative overflow-hidden hover:text-white hover:bg-teal-600 duration-300">
             <p className="font-semibold text-2xl p-5">Ноутбуки</p>
