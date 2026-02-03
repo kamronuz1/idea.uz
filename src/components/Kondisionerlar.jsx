@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axiosInstance from "../service/axios.inctance";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 
@@ -42,7 +42,6 @@ export default function Kondisionerlar() {
                 key={product.id}
                 className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
               >
-
                 <button className="absolute top-3 right-3 text-gray-400 hover:text-pink-500">
                   <FaHeart size={18} />
                 </button>
@@ -57,7 +56,9 @@ export default function Kondisionerlar() {
                   {product.price.toLocaleString("ru-RU")} сум
                 </h2>
 
-                <p className="text-sm mt-2 font-medium">{product.name}</p>
+                <NavLink to={`/product/${product.id}`}>
+                  <p className="text-sm mt-2 font-medium">{product.name}</p>
+                </NavLink>
 
                 <p className="text-xs text-gray-400 mt-1">
                   Бренд:{" "}

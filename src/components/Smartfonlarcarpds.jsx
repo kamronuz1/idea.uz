@@ -1,11 +1,8 @@
-
-
 import React, { useEffect, useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axiosInstance from "../service/axios.inctance";
-
 
 export default function Smartfonlarcarpds() {
   const [products, setProducts] = useState([]);
@@ -38,13 +35,12 @@ export default function Smartfonlarcarpds() {
 
       <div className="grid grid-cols-5 gap-6">
         {products
-          .filter(product => product.category === "Smartfon") 
-          .map(product => (
+          .filter((product) => product.category === "Smartfon")
+          .map((product) => (
             <div
               key={product.id}
               className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
             >
-
               <button className="absolute top-3 right-3 text-gray-400 hover:text-pink-500">
                 <FaHeart size={18} />
               </button>
@@ -59,7 +55,9 @@ export default function Smartfonlarcarpds() {
                 {product.price.toLocaleString("ru-RU")} сум
               </h2>
 
-              <p className="text-sm mt-2 font-medium">{product.name}</p>
+              <NavLink to={`/product/${product.id}`}>
+                <p className="text-sm mt-2 font-medium">{product.name}</p>
+              </NavLink>
 
               <p className="text-xs text-gray-400 mt-1">
                 Бренд: <span className="underline">{product.brand}</span>
@@ -67,7 +65,7 @@ export default function Smartfonlarcarpds() {
 
               <div className="flex items-center gap-3 mt-4">
                 <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-sm py-2 rounded-lg">
-                 Купить сразу
+                  Купить сразу
                 </button>
                 <button className="w-10 h-10 bg-pink-600 hover:bg-pink-700 text-white rounded-lg flex items-center justify-center">
                   <FaShoppingBag />

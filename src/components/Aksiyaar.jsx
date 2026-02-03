@@ -1,6 +1,6 @@
 export function Aksiyalar() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-14">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 px-14 mt-5">
       <div className="bg-white rounded-2xl shadow p-4">
         <img
           className="rounded-2xl"

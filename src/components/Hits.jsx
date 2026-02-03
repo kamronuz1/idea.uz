@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import axios from "axios";
 import axiosInstance from "../service/axios.inctance";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { BiRightArrowAlt } from "react-icons/bi";
 
 export default function Hits() {
+  const { id } = useParams();
+
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     try {
@@ -63,7 +65,9 @@ export default function Hits() {
                       {product.price.toLocaleString("ru-RU")} сум
                     </h2>
 
-                    <p className="text-sm mt-2 font-medium">{product.name}</p>
+                    <NavLink to={`/product/${product.id}`}>
+                      <p className="text-sm mt-2 font-medium">{product.name}</p>
+                    </NavLink>
 
                     <p className="text-xs text-gray-400 mt-1">
                       Бренд:{" "}

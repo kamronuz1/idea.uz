@@ -23,6 +23,7 @@ import SizUchunMaxsusCards from "./components/SizUchunMaxsusCards";
 import Noutbuklar from "./components/Noutbuklar";
 import Televizorlar from "./components/Televizorlar";
 import Kondisionerlar from "./components/Kondisionerlar";
+import ProductItem from "./components/ProductItem";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
       {
         path: "/uycards",
         element: <Uycards />,
+      },
+      {
+        path: "/product/:id",
+        element: <ProductItem />,
       },
     ],
   },

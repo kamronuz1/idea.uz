@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import axiosInstance from "../service/axios.inctance";
 
 
@@ -59,7 +59,9 @@ export default function Uy() {
                 {product.price.toLocaleString("ru-RU")} сум
               </h2>
 
+              <NavLink to={`/product/${product.id}`}>
               <p className="text-sm mt-2 font-medium">{product.name}</p>
+            </NavLink>
 
               <p className="text-xs text-gray-400 mt-1">
                 Бренд: <span className="underline">{product.brand}</span>
