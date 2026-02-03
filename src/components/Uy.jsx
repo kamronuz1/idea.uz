@@ -56,7 +56,7 @@ export default function Uy() {
               />
 
               <h2 className="text-pink-600 text-xl font-bold">
-                {product.price.toLocaleString("ru-RU")} сум
+                {Number(product.price).toLocaleString("ru-RU")} сум
               </h2>
 
               <NavLink to={`/product/${product.id}`}>

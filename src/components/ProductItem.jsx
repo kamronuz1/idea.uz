@@ -74,7 +74,6 @@ export default function ProductItem() {
       </div>
 
       <div className="flex gap-6 mt-10">
-        {/* LEFT SIDE */}
         <div className="bg-white p-7 rounded-xl flex-1">
           <p className="text-3xl font-semibold">{product.name}</p>
 
@@ -98,7 +97,6 @@ export default function ProductItem() {
           </div>
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="bg-white p-5 rounded-xl w-[350px] shrink-0 h-[305px]">
           <p className="mb-2 font-semibold">Цена товара</p>
           <p className="text-2xl font-semibold text-[#dd1470]">

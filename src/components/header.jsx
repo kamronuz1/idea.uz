@@ -31,7 +31,7 @@ export default function Header() {
               </div>
 
               <div className="flex items-center gap-2 cursor-pointer">
-                <span>RU</span>
+                <img className="w-5" src="https://static.vecteezy.com/system/resources/thumbnails/024/960/461/small/russia-flag-circle-shape-national-symbol-simple-icon-png.png" alt="Flag" />
                 <span>Русский</span>
                 <FaChevronDown className="text-gray-500 text-xs" />
               </div>
