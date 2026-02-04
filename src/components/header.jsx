@@ -5,7 +5,7 @@ import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiSearch } from "react-icons/ci";
 import { FiHeart, FiShoppingBag, FiBarChart2, FiUser } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 export default function Header() {
   return (
     <div>
@@ -82,7 +82,8 @@ export default function Header() {
               <span className="text-xs mt-1">Избранное</span>
             </div>
           </Link>
-          <div className="relative flex flex-col items-center text-gray-700 cursor-pointer hover:text-pink-600">
+          <NavLink to={"/basket"}>
+            <div className="relative flex flex-col items-center text-gray-700 cursor-pointer hover:text-pink-600">
             <div className="relative hover:text-pink-600">
               <FiShoppingBag size={22} />
               <span
@@ -95,6 +96,7 @@ export default function Header() {
             </div>
             <span className="text-xs mt-1">Корзина</span>
           </div>
+          </NavLink>
 
           <div className="relative flex flex-col items-center text-gray-700 hover:text-pink-600 cursor-pointer">
             <div className="relative hover:text-pink-600">

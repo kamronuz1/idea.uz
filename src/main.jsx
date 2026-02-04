@@ -24,6 +24,7 @@ import Noutbuklar from "./components/Noutbuklar";
 import Televizorlar from "./components/Televizorlar";
 import Kondisionerlar from "./components/Kondisionerlar";
 import ProductItem from "./components/ProductItem";
+import Basket from "./pages/Basket";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/liked",
         element: <Liked />,
+      },
+      {
+        path: "/basket",
+        element: <Basket />,
       },
       {
         path: "/rasrochka",

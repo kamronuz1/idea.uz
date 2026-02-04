@@ -19,6 +19,22 @@ export default function SizUchunMaxsusCards() {
     getProducts();
   }, []);
 
+  const toggleLike = async (product) => {
+    try {
+      await axiosInstance.put(`/IdeaProduct/${product.id}`, {
+        like: !product.like,
+      });
+
+      setProducts((prev) =>
+        prev.map((item) =>
+          item.id === product.id ? { ...item, like: !item.like } : item,
+        ),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="py-9 px-16">
       <div className="flex justify-between items-center mb-6">
@@ -39,9 +55,14 @@ export default function SizUchunMaxsusCards() {
             key={product.id}
             className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
           >
-            <button className="absolute top-3 right-3 text-gray-400 hover:text-pink-500">
-              <FaHeart size={18} />
-            </button>
+            <button
+                      onClick={() => toggleLike(product)}
+                      className={`absolute top-3 right-3 transition ${
+                        product.like ? "text-red-500" : "text-gray-400"
+                      }`}
+                    >
+                      <FaHeart size={18} />
+                    </button>
 
             <img
               src={product.ImageLink}
