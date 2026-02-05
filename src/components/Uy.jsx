@@ -1,10 +1,10 @@
-
 import React, { useEffect, useState } from "react";
 import { BiRightArrowAlt } from "react-icons/bi";
 import { FaHeart, FaShoppingBag } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import axiosInstance from "../service/axios.inctance";
-
+import { BsCartCheckFill } from "react-icons/bs";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Uy() {
   const [products, setProducts] = useState([]);
@@ -38,6 +38,23 @@ export default function Uy() {
     }
   };
 
+  const toggleBasket = async (product) => {
+    try {
+      await axiosInstance.put(`/IdeaProduct/${product.id}`, {
+        ...product,
+        basket: !product.basket,
+      });
+
+      setProducts((prev) =>
+        prev.map((item) =>
+          item.id === product.id ? { ...item, basket: !item.basket } : item,
+        ),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="py-9 px-16">
       <div className="flex justify-between items-center mb-6">
@@ -47,28 +64,27 @@ export default function Uy() {
           to="/uycards"
           className="text-pink-600 hover:underline flex items-center"
         >
-        Смотреть все <BiRightArrowAlt />
+          Смотреть все <BiRightArrowAlt />
         </Link>
       </div>
 
       <div className="grid grid-cols-5 gap-6">
         {products
-          .filter(product => product.category === "UyUchunKichikTexnika") 
+          .filter((product) => product.category === "UyUchunKichikTexnika")
           .slice(0, 5)
-          .map(product => (
+          .map((product) => (
             <div
               key={product.id}
               className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
             >
-
               <button
-                      onClick={() => toggleLike(product)}
-                      className={`absolute top-3 right-3 transition ${
-                        product.like ? "text-red-500" : "text-gray-400"
-                      }`}
-                    >
-                      <FaHeart size={18} />
-                    </button>
+                onClick={() => toggleLike(product)}
+                className={`absolute top-3 right-3 transition ${
+                  product.like ? "text-red-500" : "text-gray-400"
+                }`}
+              >
+                <FaHeart size={18} />
+              </button>
 
               <img
                 src={product.ImageLink}
@@ -81,8 +97,8 @@ export default function Uy() {
               </h2>
 
               <NavLink to={`/product/${product.id}`}>
-              <p className="text-sm mt-2 font-medium">{product.name}</p>
-            </NavLink>
+                <p className="text-sm mt-2 font-medium">{product.name}</p>
+              </NavLink>
 
               <p className="text-xs text-gray-400 mt-1">
                 Бренд: <span className="underline">{product.brand}</span>
@@ -92,8 +108,21 @@ export default function Uy() {
                 <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-sm py-2 rounded-lg">
                   Купить сразу
                 </button>
-                <button className="w-10 h-10 bg-pink-600 hover:bg-pink-700 text-white rounded-lg flex items-center justify-center">
-                  <FaShoppingBag />
+                <button
+                  onClick={() => toggleBasket(product)}
+                  className={`w-10 h-10 rounded-lg flex items-center justify-center transition
+                      ${
+                        product.basket
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-pink-600 hover:bg-pink-700"
+                      }
+                      text-white`}
+                >
+                  {product.basket ? (
+                    <BsCartCheckFill size={18} />
+                  ) : (
+                    <FiShoppingCart size={18} />
+                  )}
                 </button>
               </div>
             </div>

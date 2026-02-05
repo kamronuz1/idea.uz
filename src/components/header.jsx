@@ -71,13 +71,7 @@ export default function Header() {
             <div className="relative flex flex-col items-center text-gray-700  cursor-pointer hover:text-pink-600">
               <div className="relative hover:text-pink-600">
                 <FiHeart size={22} />
-                <span
-                  className="absolute -top-2 -right-2 min-w-[16px] h-[16px]
-        px-1 text-[10px] flex items-center justify-center
-        bg-yellow-400 text-black rounded-full font-semibold"
-                >
-                  0
-                </span>
+                
               </div>
               <span className="text-xs mt-1">Избранное</span>
             </div>
@@ -86,13 +80,6 @@ export default function Header() {
             <div className="relative flex flex-col items-center text-gray-700 cursor-pointer hover:text-pink-600">
             <div className="relative hover:text-pink-600">
               <FiShoppingBag size={22} />
-              <span
-                className="absolute -top-2 -right-2 min-w-[16px] h-[16px]
-        px-1 text-[10px] flex items-center justify-center
-        bg-yellow-400 text-black rounded-full font-semibold"
-              >
-                0
-              </span>
             </div>
             <span className="text-xs mt-1">Корзина</span>
           </div>
@@ -101,13 +88,6 @@ export default function Header() {
           <div className="relative flex flex-col items-center text-gray-700 hover:text-pink-600 cursor-pointer">
             <div className="relative hover:text-pink-600">
               <FiBarChart2 size={22} />
-              <span
-                className="absolute -top-2 -right-2 min-w-[16px] h-[16px]
-        px-1 text-[10px] flex items-center justify-center
-        bg-yellow-400 text-black rounded-full font-semibold"
-              >
-                0
-              </span>
             </div>
             <span className="text-xs mt-1">Сравнение</span>
           </div>

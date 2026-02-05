@@ -3,6 +3,7 @@ import axiosInstance from "../service/axios.inctance";
 import { NavLink } from "react-router-dom";
 import { GiScales } from "react-icons/gi";
 import { FiShoppingBag, FiTrash2 } from "react-icons/fi";
+import SizUchunMaxsus from "../components/SizUchunMaxsus";
 
 export default function LikedPage() {
   const [products, setProducts] = useState([]);
@@ -75,7 +76,8 @@ export default function LikedPage() {
   }
 
   return (
-    <div className="p-10 flex flex-col gap-5">
+    <div>
+      <div className="p-10 flex flex-col gap-5">
       {products.map((product) => (
         <div className="bg-white rounded-2xl p-6 w-full flex items-center justify-between shadow-sm">
           <div className="flex items-center gap-6">
@@ -118,6 +120,8 @@ export default function LikedPage() {
           </div>
         </div>
       ))}
+    </div>
+    <SizUchunMaxsus/>
     </div>
   );
 }

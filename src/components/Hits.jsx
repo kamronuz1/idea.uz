@@ -4,6 +4,8 @@ import axios from "axios";
 import axiosInstance from "../service/axios.inctance";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { FiShoppingBag, FiShoppingCart } from "react-icons/fi";
+import { BsCartCheckFill } from "react-icons/bs";
 
 export default function Hits() {
   const { id } = useParams();
@@ -31,6 +33,23 @@ export default function Hits() {
       setProducts((prev) =>
         prev.map((item) =>
           item.id === product.id ? { ...item, like: !item.like } : item,
+        ),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleBasket = async (product) => {
+    try {
+      await axiosInstance.put(`/IdeaProduct/${product.id}`, {
+        ...product,
+        basket: !product.basket,
+      });
+
+      setProducts((prev) =>
+        prev.map((item) =>
+          item.id === product.id ? { ...item, basket: !item.basket } : item,
         ),
       );
     } catch (error) {
@@ -101,8 +120,21 @@ export default function Hits() {
                       <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-sm py-2 rounded-lg">
                         Купить сразу
                       </button>
-                      <button className="w-10 h-10 bg-pink-600 hover:bg-pink-700 text-white rounded-lg flex items-center justify-center">
-                        <FaShoppingBag />
+                      <button
+                        onClick={() => toggleBasket(product)}
+                        className={`w-10 h-10 rounded-lg flex items-center justify-center transition
+                      ${
+                        product.basket
+                          ? "bg-green-600 hover:bg-green-700"
+                          : "bg-pink-600 hover:bg-pink-700"
+                      }
+                      text-white`}
+                      >
+                        {product.basket ? (
+                          <BsCartCheckFill size={18} />
+                        ) : (
+                          <FiShoppingCart size={18} />
+                        )}
                       </button>
                     </div>
                   </div>

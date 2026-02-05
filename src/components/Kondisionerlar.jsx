@@ -35,6 +35,23 @@ export default function Kondisionerlar() {
     }
   };
 
+  const toggleBasket = async (product) => {
+    try {
+      await axiosInstance.put(`/IdeaProduct/${product.id}`, {
+        ...product,
+        basket: !product.basket,
+      });
+
+      setProducts((prev) =>
+        prev.map((item) =>
+          item.id === product.id ? { ...item, basket: !item.basket } : item,
+        ),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="px-12 mb-10 mt-10">
       <div className="flex justify-between items-center mb-6">
@@ -59,13 +76,13 @@ export default function Kondisionerlar() {
                 className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"
               >
                 <button
-                      onClick={() => toggleLike(product)}
-                      className={`absolute top-3 right-3 transition ${
-                        product.like ? "text-red-500" : "text-gray-400"
-                      }`}
-                    >
-                      <FaHeart size={18} />
-                    </button>
+                  onClick={() => toggleLike(product)}
+                  className={`absolute top-3 right-3 transition ${
+                    product.like ? "text-red-500" : "text-gray-400"
+                  }`}
+                >
+                  <FaHeart size={18} />
+                </button>
 
                 <img
                   src={product.ImageLink}
@@ -92,8 +109,21 @@ export default function Kondisionerlar() {
                   <button className="flex-1 bg-gray-100 hover:bg-gray-200 text-sm py-2 rounded-lg">
                     Купить сразу
                   </button>
-                  <button className="w-10 h-10 bg-pink-600 hover:bg-pink-700 text-white rounded-lg flex items-center justify-center">
-                    <FaShoppingBag />
+                  <button
+                    onClick={() => toggleBasket(product)}
+                    className={`w-10 h-10 rounded-lg flex items-center justify-center transition
+                                        ${
+                                          product.basket
+                                            ? "bg-green-600 hover:bg-green-700"
+                                            : "bg-pink-600 hover:bg-pink-700"
+                                        }
+                                        text-white`}
+                  >
+                    {product.basket ? (
+                      <BsCartCheckFill size={18} />
+                    ) : (
+                      <FiShoppingCart size={18} />
+                    )}
                   </button>
                 </div>
               </div>

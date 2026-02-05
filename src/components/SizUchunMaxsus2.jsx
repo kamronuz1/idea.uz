@@ -6,7 +6,7 @@ import { Link, NavLink } from "react-router-dom";
 import { BsCartCheckFill } from "react-icons/bs";
 import { FiShoppingCart } from "react-icons/fi";
 
-export default function SizUchunMaxsusCards() {
+export default function SizUchunMaxsus2() {
   const [products, setProducts] = useState([]);
   const getProducts = async () => {
     try {
@@ -55,21 +55,20 @@ export default function SizUchunMaxsusCards() {
   };
 
   return (
-    <div className="py-9 px-16">
+    <div className="pt-7 px-4 mt-3">
       <div className="flex justify-between items-center mb-6">
-        <p className="text-xl font-semibold">Специально для вас</p>
-        <Link to={"/"}>
-          <p
-            onClick={() => navigate("/products")}
-            className="text-pink-600 cursor-pointer hover:underline flex items-center"
-          >
-            Главная <BiRightArrowAlt />
-          </p>
+        <p className="text-2xl font-semibold">Специально для вас</p>
+
+        <Link
+          to="/sizuchunmaxsus"
+          className="text-pink-600 hover:underline flex items-center"
+        >
+          Смотреть все <BiRightArrowAlt />
         </Link>
       </div>
 
       <div className="grid grid-cols-5 gap-6">
-        {products.map((product) => (
+        {products.slice(0, 5).map((product) => (
           <div
             key={product.id}
             className="w-[260px] bg-white rounded-2xl shadow-md p-4 relative"

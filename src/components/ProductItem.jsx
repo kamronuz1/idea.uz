@@ -6,6 +6,8 @@ import { TbTruckDelivery } from "react-icons/tb";
 import { RiDiscountPercentFill, RiScales3Line } from "react-icons/ri";
 import { FaChevronDown, FaHeart, FaRegHeart } from "react-icons/fa";
 import SizUchunMaxsus from "./SizUchunMaxsus";
+import { FiShoppingCart } from "react-icons/fi";
+import { BsCartCheckFill } from "react-icons/bs";
 
 export default function ProductItem() {
   const { id } = useParams();
@@ -37,6 +39,22 @@ export default function ProductItem() {
       setProduct((prev) => ({
         ...prev,
         like: !prev.like,
+      }));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const toggleBasket = async () => {
+    try {
+      await axiosInstance.put(`/IdeaProduct/${product.id}`, {
+        ...product,
+        basket: !product.basket,
+      });
+
+      setProduct((prev) => ({
+        ...prev,
+        basket: !prev.basket,
       }));
     } catch (error) {
       console.log(error);
@@ -102,7 +120,9 @@ export default function ProductItem() {
                 } `}
               >
                 <FaHeart className="text-xl" />
-                <span className="text-black hover:text-pink-700 duration-300">В избранное</span>
+                <span className="text-black hover:text-pink-700 duration-300">
+                  В избранное
+                </span>
               </button>
 
               <button className="flex items-center gap-2 hover:text-[#dd1470] duration-300">
@@ -130,8 +150,16 @@ export default function ProductItem() {
               Полная оплата <FaChevronDown />
             </button>
 
-            <button className="mt-8 w-full font-medium border border-[#dd1470] text-[#dd1470] py-3 rounded-xl hover:bg-[#dd1470] duration-300 hover:text-white">
-              Добавить в корзину
+            <button
+              onClick={toggleBasket}
+              className={`mt-8 w-full font-medium py-3 rounded-xl duration-300
+    ${
+      product.basket
+        ? "bg-orange-500 text-white cursor-pointer"
+        : "border border-[#dd1470] text-[#dd1470] hover:bg-[#dd1470] hover:text-white"
+    }`}
+            >
+              {product.basket ? "Добавлено в корзину" : "Добавить в корзину"}
             </button>
 
             <button className="mt-2 w-full bg-[#dd1470] text-white py-3 rounded-xl font-medium hover:bg-pink-900 duration-300">
